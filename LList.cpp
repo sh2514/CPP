@@ -11,6 +11,85 @@ using namespace std;
 
 int main()
 {	
+	/* ========================================
+	SList Test
+	======================================== */
+	/*
+	SList<int> myS1;
+	myS1.push(5);
+	myS1.push(10);
+	myS1.push(15);
+	myS1.push(20);
+	
+	SList<int> myS2 = myS1;
+	myS2.pop();
+	
+	SList<int> myS3;
+	myS3 = myS1;
+	
+	cout << "myS1.peek() = " << myS1.peek() << endl;
+	cout << "myS1[2] = " << myS1[2] << endl;
+	cout << "myS1 == myS2 = " << (myS1 == myS2) << endl;
+	cout << "myS1 < myS2 = " << (myS1 < myS2) << endl;
+	cout << "myS1 > myS2 = " << (myS1 > myS2) << endl;
+	cout << "myS1 == myS3 = " << (myS1 == myS3) << endl;
+	myS1.push(3);
+	cout<< "myS1.push(3)" << endl;
+	myS2.push(8);
+	cout << "myS2.push(8)" << endl;
+	cout << "myS1 == myS2 = " << (myS1 == myS2) << endl;
+	cout << "myS1 < myS2 = " << (myS1 < myS2) << endl;
+	cout << "myS1 > myS2 = " << (myS1 > myS2) << endl;
+	cout << "myS1 == myS3 = " << (myS1 == myS3) << endl;
+	
+	
+	cout << endl;
+	cout << "myS1: " << myS1 << ", size = " << myS1.size() << ", empty = " << myS1.empty() << endl;
+	cout << "myS2: " << myS2 << ", size = " << myS2.size() << ", empty = " << myS2.empty() << endl;
+	cout << "myS3: " << myS3 << ", size = " << myS3.size() << ", empty = " << myS3.empty() << endl;
+	*/
+	
+	
+	/* ========================================
+	QList Test
+	======================================== */
+	/*
+	QList<int> myQ1;
+	myQ1.enqueue(5);
+	myQ1.enqueue(10);
+	myQ1.enqueue(15);
+	myQ1.enqueue(20);
+	
+	QList<int> myQ2 = myQ1;
+	myQ2.dequeue();
+	
+	QList<int> myQ3;
+	myQ3 = myQ1;
+	
+	cout << "myQ1.front() = " << myQ1.front() << endl;
+	cout << "myQ1.back() = " << myQ1.back() << endl;
+	cout << "myQ1[2] = " << myQ1[2] << endl;
+	cout << "myQ1 == myQ2 = " << (myQ1 == myQ2) << endl;
+	cout << "myQ1 < myQ2 = " << (myQ1 < myQ2) << endl;
+	cout << "myQ1 > myQ2 = " << (myQ1 > myQ2) << endl;
+	cout << "myQ1 == myQ3 = " << (myQ1 == myQ3) << endl;
+	myQ1.enqueue(3);
+	cout << "myQ1.enqueue(3)" << endl;
+	myQ2.enqueue(8);
+	cout << "myQ2.enqueue(8)" << endl;
+	cout << "myQ1 == myQ2 = " << (myQ1 == myQ2) << endl;
+	cout << "myQ1 < myQ2 = " << (myQ1 < myQ2) << endl;
+	cout << "myQ1 > myQ2 = " << (myQ1 > myQ2) << endl;
+	cout << "myQ1 == myQ3 = " << (myQ1 == myQ3) << endl;
+	
+	
+	cout << endl;
+	cout << "myQ1: " << myQ1 << ", size = " << myQ1.size() << ", empty = " << myQ1.empty() << endl;
+	cout << "myQ2: " << myQ2 << ", size = " << myQ2.size() << ", empty = " << myQ2.empty() << endl;
+	cout << "myQ3: " << myQ3 << ", size = " << myQ3.size() << ", empty = " << myQ3.empty() << endl;
+	*/
+	
+	/*
 	Stack<int> s1;
 	s1.push(4);
 	s1.push(5);
@@ -28,7 +107,7 @@ int main()
 	cout << (s1 == s2) << endl;
 	cout << (s1 < s2) << endl;
 	cout << (s1 > s2) << endl;
-	
+	*/
 
 	/*
 	Queue<int> q1;

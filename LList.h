@@ -63,19 +63,19 @@ public:
 	}
 	
 	// Overloaded Assignment Operator
-	virtual LList<T> & operator=(const LList<T> & arg)
+	LList<T> & operator=(const LList<T> & arg)
 	{
 		if (&arg == this)
 			return *this;
 		
 		this->~LList();
-		
+	
 		copyHelper(arg);
 		return *this;
 	}
 	
 	// Performs the cloning for the copy constructor and assignment operator
-	virtual void copyHelper(const LList<T> & arg)
+	void copyHelper(const LList<T> & arg)
 	{
 		numberOfElements = arg.numberOfElements;
 		value = T();
@@ -520,6 +520,7 @@ ostream & operator<<(ostream & output, const Queue<T> & arg)
 }
 
 
+
 /* ==================================================
 Stack
 ================================================== */
@@ -635,165 +636,168 @@ ostream & operator<<(ostream & output, const Stack<T> & arg)
 
 
 
-// ========
-// OUTDATED
-// ========
-
-// THESE TWO FUNCTIONS ARE NEEDED IN LLIST FOR INHERITANCE IMPLEMENTATIONS
-	/*
-	virtual bool setNumberOfElements(int number)
-	{
-		if (number < 0)
-			return false;
-			
-		numberOfElements = number;	
-		return true;
-	}
-	
-	virtual LList<T> * & getHead()
-	{
-		return head;
-	}
-	*/
-
 /* ==================================================
-Queue (Inheritance Implementation)
+QList - Queue Inheritance Implementation
 ================================================== */
-/*
 template <typename T>
-class Queue : public LList<T>
+class QList : public LList<T>
 {
 private:
-
+	
 public:
-	Queue()
-	{
-	}
+	// Default constructor
+	QList() : LList<T>() {}
 	
-	Queue(Queue<T> & arg)
-	{
-		copyHelper(arg);
-	}
+	// Copy constructor
+	QList(const QList & arg) : LList<T>(arg) {}	// Initialize base class using initialization list
 	
-	const Queue<T> & operator=(Queue<T> & arg)
+	// Overloaded assignment
+	QList<T> & operator=(const QList<T> & arg)
 	{
-		if (&arg == this)
+		if (this == &arg)
 			return *this;
-			
-		this->~Queue();
 		
-		copyHelper(arg);
+		*((LList<T> *)(this)) = arg;			// convert to LList<T> * first
 		return *this;
 	}
 	
-	void copyHelper(Queue<T> & arg)
-	{
-		LList<T> temp;		
-		temp.setNumberOfElements(arg.length());
-		temp.getHead() = arg.getHead();
-		
-		LList<T>::copyHelper(temp);
-	}
+	// Destructor
+	~QList(){}
 	
-	~Queue()
-	{
-		LList<T>::~LList<T>();
-	}
+	// Insert an item in the back of the queue
+	bool enqueue(T arg){ return LList<T>::push_back(arg); }
 	
-	bool enqueue(T arg)
-	{
-		return LList<T>::push_back(arg);
-	}
+	// Remove an item from the front of the queue
+	T dequeue(){ return LList<T>::pop_front(); }
 	
-	T dequeue()
-	{
-		T result = LList<T>::front();
-		LList<T>::pop_front();
-		return result;
-	}
+	// [CONST] Return the item in the front of the queue
+	T front() const { return LList<T>::front(); }
 	
-	T front()
-	{
-		return LList<T>::front();
-	}
+	// [CONST] Return the item in the back of the queue
+	T back() const { return LList<T>::back(); }
 	
-	T back()
-	{
-		return LList<T>::back();
-	}
+	// [CONST] Return the length of the queue
+	int length() const { return LList<T>::length(); }
 	
-	void print()
+	// [CONST] Returns the length of the queue
+	int size() const { return LList<T>::length(); }
+	
+	// [CONST] Determines whether the queue is empty
+	bool empty() const { return LList<T>::empty(); }
+	
+	// [CONST] Output the items in the queue
+	void print() const { LList<T>::print(); }
+	
+	// Overloaded []
+	T operator[](int index) const 
+	{ 
+		return ((LList<T>)(*this))[index]; 		// convert to LList<T> first
+	}				
+	
+	// [CONST] Overloaded == operator - returns true when all the elements are the same in both queues
+	bool operator==(const QList<T> & arg) const 
 	{
-		LList<T>::print();	
+		return ((LList<T>)(*this)) == arg;		// convert to LList<T> first
+	}	
+	
+	// [CONST] Overloaded < - returns true if queue has fewer elements than argument
+	bool operator<(const QList<T> & arg) const 
+	{
+		return ((LList<T>)(*this)) < arg;		// convert to LList<T> first
+	}	
+	
+	// [CONST] Overloaded > - returns true if queue has more elements than argument
+	bool operator>(const QList<T> & arg) const 
+	{
+		return ((LList<T>)(*this)) > arg;		// convert to LList<T> first
 	}
 };
-*/
+
+// Overloaded stream insertion
+template <typename T>
+ostream & operator<<(ostream & output, const QList<T> & arg)
+{
+	arg.print();
+	return output;
+}
+
 
 
 /* ==================================================
-Stack (Inheritance Implementation)
+SList - Stack Inheritance Implementation
 ================================================== */
-/*
 template <typename T>
-class Stack : public LList<T>
+class SList : public LList<T>
 {
 private:
-
+	
 public:
-	Stack()
-	{
-	}
+	// Default constructor
+	SList() : LList<T>() {}
 	
-	Stack(Stack<T> & arg)
-	{
-		copyHelper(arg);
-	}
+	// Copy constructor
+	SList(const SList & arg) : LList<T>(arg) {}	// Initialize base class using initialization list
 	
-	const Stack<T> & operator=(Stack<T> & arg)
+	// Overloaded assignment
+	SList<T> & operator=(const SList<T> & arg)
 	{
-		if (&arg == this)
+		if (this == &arg)
 			return *this;
-			
-		this->~Stack();
 		
-		copyHelper(arg);
+		*((LList<T> *)(this)) = arg;			// convert to LList<T> * first
 		return *this;
 	}
 	
-	void copyHelper(Stack<T> & arg)
-	{
-		LList<T> temp;		
-		temp.setNumberOfElements(arg.length());
-		temp.getHead() = arg.getHead();
-		
-		LList<T>::copyHelper(temp);
-	}
+	// Destructor
+	~SList(){}
 	
-	~Stack()
-	{
-		LList<T>::~LList<T>();
-	}
+	// Insert an item on top of the stack
+	bool push(T arg){ return LList<T>::push_back(arg); }
 	
-	int push(T arg)
-	{
-		LList<T>::push_back(arg);
-	}
+	// Remove an item from the top of the stack
+	T pop(){ return LList<T>::pop_back(); }
 	
-	T pop()
-	{
-		T result = LList<T>::back();
-		LList<T>::pop_back();
-		return result;
-	}
+	// [CONST] Return the item on top of the stack
+	T peek() const { return LList<T>::back(); }
+
+	// [CONST] Returns the size of the stack
+	int size() const { return LList<T>::length(); }
 	
-	T peek()
-	{
-		return LList<T>::back();
-	}
+	// [CONST] Determines whether the stack is empty
+	bool empty() const { return LList<T>::empty(); }
 	
-	void print()
+	// [CONST] Output the items in the stack
+	void print() const { LList<T>::print(); }
+	
+	// Overloaded []
+	T operator[](int index) const 
+	{ 
+		return ((LList<T>)(*this))[index]; 		// convert to LList<T> first
+	}				
+	
+	// [CONST] Overloaded == operator - returns true when all the elements are the same in both stacks
+	bool operator==(const SList<T> & arg) const 
 	{
-		LList<T>::print();	
+		return ((LList<T>)(*this)) == arg;		// convert to LList<T> first
+	}	
+	
+	// [CONST] Overloaded < - returns true if stack has fewer elements than argument
+	bool operator<(const SList<T> & arg) const 
+	{
+		return ((LList<T>)(*this)) < arg;		// convert to LList<T> first
+	}	
+	
+	// [CONST] Overloaded > - returns true if stack has more elements than argument
+	bool operator>(const SList<T> & arg) const 
+	{
+		return ((LList<T>)(*this)) > arg;		// convert to LList<T> first
 	}
 };
-*/
+
+// Overloaded stream insertion
+template <typename T>
+ostream & operator<<(ostream & output, const SList<T> & arg)
+{
+	arg.print();
+	return output;
+}
