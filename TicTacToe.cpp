@@ -274,6 +274,7 @@ public:
 		bool endGame = false;		// Continue game?
 		while (!endGame)
 		{
+			// *** LOAD GAME HERE
 			string input = "NA";
 			// Play X or O, or exit game 
 			while (input != "X" && input != "O" && input != "exit")

@@ -148,4 +148,18 @@ int main()
 	cout << "GCD(100, 25) = " << GCD(100, 25) << endl;
 	cout << "GCD(125, 225) = " << GCD(125, 225) << endl;
 	cout << "GCD(1, 45) = " << GCD(1, 45) << endl;
+	
+	// Relational Operators
+	cout << "\n===== Relational Operators =====\n";
+	Rat ratx(-2, 4);
+	Rat raty(2, -4);
+	Rat ratz(-5, 2);
+	
+	cout << ratx << " == " << raty << "? " << (ratx == raty) << endl;
+	cout << ratx << " < " << raty << "? " << (ratx < raty) << endl;
+	cout << ratx << " > " << raty << "? " << (ratx > raty) << endl << endl;
+	
+	cout << ratx << " == " << ratz << "? " << (ratx == ratz) << endl;
+	cout << ratx << " < " << ratz << "? " << (ratx < ratz) << endl;
+	cout << ratx << " > " << ratz << "? " << (ratx > ratz) << endl;
 }

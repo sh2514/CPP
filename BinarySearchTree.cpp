@@ -33,7 +33,9 @@ int main()
 	
 	myBSTz.insert(5);
 	myBSTz.insert(11);
-	cout << (myBSTx == myBSTz) << endl;
+	cout << (myBSTx == myBSTz) << endl << endl;
+	
+	cout << myBSTx.size() << " " << myBSTz.size() << endl;
 	
 	myBSTx.insert(11);
 	myBSTx.insert(5);
@@ -43,7 +45,9 @@ int main()
 	myBSTx.remove(11);
 	myBSTz.remove(5);
 	myBSTz.remove(11);
-	cout << (myBSTx == myBSTz) << endl;
+	cout << (myBSTx == myBSTz) << endl << endl;
+	
+	cout << myBSTx.size() << " " << myBSTz.size() << endl;
 	
 	
 	

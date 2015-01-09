@@ -11,7 +11,7 @@ http://en.wikipedia.org/wiki/Euclidean_algorithm
 using namespace std;
 
 // Absolute Value
-int abs(int number)
+int absValue(int number)
 {
 	if (number < 0)
 		return -number;
@@ -21,8 +21,8 @@ int abs(int number)
 // Euclid's Algorithm
 int GCD(int first, int second)
 {	
-	first = abs(first);
-	second = abs(second);
+	first = absValue(first);
+	second = absValue(second);
 	
 	if (second > first)
 	{
@@ -66,20 +66,24 @@ public:
 		}
 	}
 	
-	// Destructor
-	~Rat(){}
-	
 	// Returns the numerator
 	int getNumerator() const { return numerator; }
 	
 	// Returns the denominator
 	int getDenominator() const  { return denominator; }
 	
-	// Change the rational number
+	// Change the rational number (always in lowest form with negative in numerator)
 	bool set(int numer, int denom = 1)
 	{
 		if (denom == 0)
 			return false;
+		
+		// Adjust negatives and if "Rat" is negative make numerator negative
+		if ((numer < 0 && denom < 0) || denom < 0)
+		{
+			numer = -numer;
+			denom = -denom;	
+		}
 		
 		int divisor = GCD(numer, denom);
 		
@@ -199,10 +203,28 @@ public:
 		
 		return result;
 	}
+	
+	// Overloaded ==
+	bool operator==(const Rat & arg)
+	{	
+		return (numerator == arg.numerator && denominator == arg.denominator);
+	}
+	
+	// Overloaded <
+	bool operator<(const Rat & arg)
+	{		
+		return (numerator * arg.denominator) < (arg.numerator * denominator);
+	}
+	
+	// Overloaded >
+	bool operator>(const Rat & arg)
+	{
+		return (numerator * arg.denominator) > (arg.numerator * denominator);
+	}
 };
 
 // Overloaded stream insertion
-ostream & operator<<(ostream & output, const Rat number)
+ostream & operator<<(ostream & output, const Rat & number)
 {
 	number.printDouble();
 	return output;	
