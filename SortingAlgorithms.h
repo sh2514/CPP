@@ -2,6 +2,13 @@
 Sorting Algorithms
 122314
 Shikuan Huang
+
+Selection Sort
+Insertion Sort
+Bubble Sort
+Merge Sort
+Quick Sort
+Radix Sort (imcomplete)
 ============================================================ */
 
 #include <iostream>
@@ -252,7 +259,7 @@ void callQuickSort(T * array, int size)
 }
 
 /* ============================================================
-Radix Sort
+Radix Sort (IMCOMPLETE)
 ============================================================ */
 template <typename T>
 void RadixSort(T * array, int size)

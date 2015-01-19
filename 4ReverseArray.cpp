@@ -18,7 +18,7 @@ bool reverseArray(T * array, int size)
 	else
 	{
 		T temp;
-		for (int i = 0; i < size / 2; i++)
+		for (int i = 0; i < size / 2; i++)		// Swap the current front and end
 		{
 			temp = array[i];
 			array[i] = array[size - 1 - i];

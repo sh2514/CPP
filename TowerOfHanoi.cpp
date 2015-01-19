@@ -16,6 +16,7 @@ private:
 	int moves;				// count the number of moves
 	
 public:
+	// Construct ToH with "rings" number of rings
 	ToH(int rings = 1)
 	{
 		moves = 0;
@@ -28,6 +29,7 @@ public:
 			towers[0].push(i);
 	}
 	
+	// Move top ring from tower "from" to tower "to"
 	void moveRing(int from, int to)
 	{
 		moves++;
@@ -36,11 +38,13 @@ public:
 		towers[to].push(temp);	
 	}
 	
+	// Solve the puzzle
 	void solve(bool showSteps = false)
 	{
 		normalToH(0, 2, 1, numberOfRings, showSteps);
 	}
 	
+	// Solves the normal ToH
 	void normalToH(int from, int to, int extra, int rings, bool showSteps)
 	{
 		if (towers[from].size() == 0)
@@ -72,11 +76,13 @@ public:
 		normalToH(extra, to, from, rings - 1, showSteps);
 	}
 	
+	// Return the number of moves
 	int getMoves() const
 	{
 		return moves;
 	}
 	
+	// Output the towers
 	void print() const
 	{
 		for (int i = 0; i < 3; i++)
@@ -84,6 +90,7 @@ public:
 	}
 };
 
+// Overloaded stream insertion
 ostream & operator<<(ostream & output, const ToH & arg)
 {
 	arg.print();

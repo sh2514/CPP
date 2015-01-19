@@ -4,8 +4,8 @@ LinkedList
 Shikuan Huang
 
 Doubly Linked List
-Queue
-Stack
+Queue (composition and inheritance implementations)
+Stack (composition and inheirtance implementations)
 ================================================== */
 
 #include <iostream>

@@ -8,24 +8,8 @@ Shikuan Huang
 
 #include <iostream>
 #include <cstdlib>
-using namespace std;
-
 #include "SortingAlgorithms.h"
-
-/*
-// Output array in rows of 10
-void printArray(int * array, int size)
-{
-	if (size <= 0)
-		return;
-	for (int i = 0; i < 20; i++)
-	{
-		if (i == 10)
-			cout << endl;
-		cout << array[i] << " ";
-	}
-}
-*/
+using namespace std;
 
 // Returns the position of the search item or -1 if not found
 // Assumes items sorted in DECREASING order
@@ -40,6 +24,7 @@ int BinarySearch(T * array, int start, int end, T key)
 		return -1;	
 	}
 	
+	// Determine whether the key is found, or is in lower half or upper half
 	int middle = (end - start) / 2 + start;
 	if (array[middle] == key)
 		return middle;
@@ -47,6 +32,33 @@ int BinarySearch(T * array, int start, int end, T key)
 		return BinarySearch(array, start, middle - 1, key);
 	else if (array[middle] > key)
 		return BinarySearch(array, middle + 1, end, key);
+}
+
+// Iterative implementation
+// Returns the position of the searchitem or -1 if not found
+// Assumes items sorted in DECREASING order
+template <typename T>
+int iBinarySearch(T * array, int start, int end, T key)
+{
+	// Invalid indices check
+	if (start > end)
+		return -1;
+	
+	// While starting index is less than or equal to ending index
+	while (start <= end)
+	{
+		int middle = (end - start) / 2 + start;
+		
+		if (array[middle] == key)
+			return middle;
+		else if (array[middle] < key)
+			end = middle - 1;
+		else if (array[middle] > key)
+			start = middle + 1;
+	}	
+	
+	// The array has been checked and key is not found
+	return -1;
 }
 
 int main()
@@ -61,7 +73,7 @@ int main()
 	
 	callMergeSort(array, 20);
 	
-	// Output unsorted array
+	// Output sorted array
 	printArray(array, 20);
 	cout << endl << endl;
 	
@@ -71,11 +83,10 @@ int main()
 	{
 		cout << "Enter a search key: ";
 		cin >> key;
-		result = BinarySearch(array, 0, 19, key);
+		result = iBinarySearch(array, 0, 19, key);
 		if (result != -1)
 			cout << key << " found at position " << result << endl;
 		else
 			cout << key << " not found in array" << endl;
 	}
-	
 }

@@ -5,9 +5,8 @@ Shikuan Huang
 ================================================== */
 
 #include <iostream>
-using namespace std;
-
 #include "RationalNumber.h"
+using namespace std;
 
 int main()
 {

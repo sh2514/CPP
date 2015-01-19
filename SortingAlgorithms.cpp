@@ -6,9 +6,8 @@ Shikuan Huang
 
 #include <iostream>
 #include <cstdlib>
-using namespace std;
-
 #include "SortingAlgorithms.h"
+using namespace std;
 
 int main()
 {
@@ -35,8 +34,7 @@ int main()
 	printArray(array, 20);
 	cout << endl;
 	
-	cout << "The array is in decreasing order: " << isDecreasing(array, 20);
-	
+	cout << "The array is in decreasing order: " << isDecreasing(array, 20);	
 }
 
 

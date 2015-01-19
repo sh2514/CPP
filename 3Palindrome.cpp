@@ -8,13 +8,14 @@ Shikuan Huang
 #include <string>
 using namespace std;
 
+// Determine whether the string argument is a palindrome
 bool isPalindrome(string arg)
 {
 	if (arg.length() == 0)
 		return false;
 	for (int i = 0; i <= arg.length() / 2; i++)
 	{
-		if (arg[i] != arg[arg.length() - 1 - i])
+		if (arg[i] != arg[arg.length() - 1 - i])	// Check the current front and current end
 			return false;
 	}
 	return true;
