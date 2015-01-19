@@ -1,6 +1,5 @@
 /* ==================================================
 Rational Number
-010315
 Shikuan Huang
 
 Euclid's Algorithm (greatest common divisor algorithm for two non-zero numbers)

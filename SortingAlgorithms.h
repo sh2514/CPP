@@ -1,6 +1,5 @@
 /* ============================================================
 Sorting Algorithms
-122314
 Shikuan Huang
 
 Selection Sort

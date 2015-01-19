@@ -1,6 +1,5 @@
 /* ==================================================
 Tic Tac Toe
-010715
 Shikuan Huang
 
 Read keyboard input in real time

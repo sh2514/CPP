@@ -1,6 +1,5 @@
 /* ==================================================
 Array References
-010915
 Shikuan Huang
 
 Array References

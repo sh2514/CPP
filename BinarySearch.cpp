@@ -1,6 +1,5 @@
 /* ============================================================
 BinarySearch
-122514
 Shikuan Huang
 
 * Requires array to be sorted

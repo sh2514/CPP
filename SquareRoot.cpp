@@ -1,6 +1,5 @@
 /* ==================================================
 Square Root
-010315
 Shikuan Huang
 
 Newton's Method

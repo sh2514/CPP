@@ -1,6 +1,5 @@
 /* ==================================================
 Binary Search Tree
-122714
 Shikuan Huang
 
 Preorder, Inorder, Postorder tree traversal
