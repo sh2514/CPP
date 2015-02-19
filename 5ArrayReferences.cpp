@@ -10,14 +10,13 @@ Array References
 #include <iostream>
 using namespace std;
 
-void printFor5(int (&arg)[5])	// array reference parameter
-{
+// array reference parameter
+void printFor5(int (&arg)[5]) {
 	for (int i = 0; i < 5; i++)
 		cout << arg[i] << " ";
 }
 
-int main()
-{
+int main() {
 	int arrayX[5] = {6, 3, 2, 7, 1};
 	int arrayY[3] = {45, 3, 24};
 	printFor5(arrayX);

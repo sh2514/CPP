@@ -13,8 +13,7 @@ Read keyboard input in real time
 
 using namespace std;
 
-class TicTacToe
-{
+class TicTacToe {
 private:
 	char ** board;
 	int turn;					// 0 = player 1's turn; 1 = player 2's turn; -1 = game over
@@ -24,42 +23,38 @@ private:
 	const static int cols = 3;
 	
 public:
-	// Default constructor
-	TicTacToe()
-	{		
+	TicTacToe() {		
 		winner = -1;
 		turnNumber = 1;
 		
 		board = new char*[rows];
-		for (int i = 0; i < cols; i++)
-		{
+		for (int i = 0; i < cols; i++) {
 			board[i] = new char[cols];
-			for (int j = 0; j < cols; j++)
+			for (int j = 0; j < cols; j++) {
 				board[i][j] = ' ';
+			}
 		}
 	}
-	
-	// Copy constructor
-	TicTacToe (const TicTacToe & arg)
-	{
+
+	TicTacToe (const TicTacToe & arg) {
 		(*this) = arg;
 	}
 	
-	// Overloaded assignment
-	TicTacToe & operator=(const TicTacToe & arg)
-	{
-		if (this == &arg)
+	TicTacToe & operator=(const TicTacToe & arg) {
+		if (this == &arg) {
 			return *this;
+		}
 		
 		board = new char*[rows];
-		for(int i = 0; i < cols; i++)
-		{
+		for(int i = 0; i < cols; i++) {
 			board[i] = new char[cols];
 		}
 		
-		for (int i = 0; i < rows; i++)
-			for (int j = 0; j < cols; j++)
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
 				board[i][j] = arg.board[i][j];
+			}
+		}
 		
 		turn = arg.turn;
 		winner = arg.winner;
@@ -68,24 +63,24 @@ public:
 		return *this;
 	}
 	
-	// Destructor
-	~TicTacToe()
-	{
-		for (int i = 0; i < rows; i++)
+	~TicTacToe() {
+		for (int i = 0; i < rows; i++) {
 			delete[] board[i];
+		}
 		delete board;
 		board = NULL;
 	}
 	
 	// Updates the game status - whether it is game over or not
-	void updateStatus()
-	{
+	void updateStatus() {
 		// Check if someone won
 		char symbol;
-		if (turn == 0)
+		if (turn == 0) {
 			symbol = 'X';
-		else
+		}
+		else {
 			symbol = 'O';
+		}
 			
 		if ((board[0][0] == symbol && board[0][1] == symbol && board[0][2] != symbol)
 			|| (board[1][0] == symbol && board[1][1] == symbol && board[1][2] == symbol)
@@ -94,54 +89,48 @@ public:
 			|| (board[0][1] == symbol && board[1][1] == symbol && board[2][1] == symbol)
 			|| (board[0][2] == symbol && board[1][2] == symbol && board[2][2] == symbol)
 			|| (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
-			|| (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol))
-		{
+			|| (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol)) {
 			winner = turn;
 			turn = -1;
 		}
-		else
-		{
+		else {
 			turn = 1 - turn;
 		}
 	}
 	
 	// Makes a move on the board based on the row and column
-	bool makeMove(int row, int col)
-	{
+	bool makeMove(int row, int col) {
 		// Ensure game is not over and indices are valid
-		if (turn == -1 || row < 0 || row > 2 || col < 0 || col > 2 )
+		if (turn == -1 || row < 0 || row > 2 || col < 0 || col > 2 ) {
 			return false;
+		}
 		
 		// If player is trying to make a move in a spot that already has a symbol
-		if (board[row][col] != ' ')
-		{
+		if (board[row][col] != ' ') {
 			cout << "Invalid move!  Enter another move!\n";
 			display();
 			return false;
 		}
 		
 		// Whose turn?
-		if (turn == 0)
-		{
+		if (turn == 0) {
 			board[row][col] = 'X';
 			updateStatus();
 		}
-		else
-		{
+		else {
 			board[row][col] = 'O';
 			updateStatus();
 		}
 		turnNumber++;
-		display();				// Display updated board
+		// Display updated board
+		display();				
 		
 		return true;
 	}
 	
 	// Convert keyboard input into a valid move
-	bool input(int key)
-	{
-		switch(key)
-		{
+	bool input(int key) {
+		switch(key) {
 			/*
 			// Used when _getch() is not used
 			case 'Q':
@@ -227,73 +216,80 @@ public:
 	}
 	
 	// Print the board, then print the status line
-	void display() const
-	{
+	void display() const {
 		cout << endl;
-		for (int i = 0; i < rows; i++)
-		{
-			for (int j = 0; j < cols; j++)
-			{
-				if (j == 1)
-					cout << "|" << board[i][j] << "|";	// Print the grid
-				else
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				// Print the grid
+				if (j == 1) {
+					cout << "|" << board[i][j] << "|";
+				}
+				else {
 					cout << board[i][j];	
+				}
 			}
-			if (i < 2)
-				cout << "\n-----\n";					// Print the grid
-			else
+			if (i < 2) {
+			// Print the grid
+				cout << "\n-----\n";					
+			}
+			else {
 				cout << endl;
+			}
 		}
 		
-		if (turn == 0)
+		if (turn == 0) {
 			cout << "Turn " << turnNumber << " - Game ongoing: X's turn...\n";
-		else if (turn == 1)
+		}
+		else if (turn == 1) {
 			cout << "Turn " << turnNumber << " - Game ongoing: O's turn...\n";
-		else
-		{
-			if (winner == 0)
+		}
+		else {
+			if (winner == 0) {
 				cout << "Game Over: X wins!\n";
-			else
+			}
+			else {
 				cout << "Game Over: O wins!\n";
+			}
 		}
 		cout << endl << endl;
 	}
 	
 	// Clears the board for a new game
-	void clearBoard()
-	{
-		for (int i = 0; i < rows; i++)
-			for (int j = 0; j < cols; j++)
+	void clearBoard() {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
 				board[i][j] = ' ';	
+			}
+		}
 	}
 	
 	// Start TicTacToe
-	void startGame()
-	{
-		bool endGame = false;		// Continue game?
-		while (!endGame)
-		{
+	void startGame() {
+		// Continue game?
+		bool endGame = false;		
+		while (!endGame) {
 			// *** LOAD GAME HERE
 			string input = "NA";
 			// Play X or O, or exit game 
-			while (input != "X" && input != "O" && input != "exit")
-			{
+			while (input != "X" && input != "O" && input != "exit") {
 				cout << "Play as X or O? ";
 				cin >> input;
-				if (input == "X")
+				if (input == "X") {
 					turn = 0;
-				else if (input == "O")
+				}
+				else if (input == "O") {
 					turn = 1;
-				else
+				}
+				else {
 					exit(0);
+				}
 			}
 			cout << endl << endl;
 			
 			// Read moves from user
 			int key = 0;
 			display();
-			while (turn != -1)
-			{
+			while (turn != -1) {
 				//cin >> key;	// Used when _getch() is not used
 				key = _getch();
 				this->input(key);
@@ -301,18 +297,15 @@ public:
 			
 			// Start a new game?  If yes, clear board and reset game variables
 			input = "NA";
-			while (input != "Y" && input != "N")
-			{
+			while (input != "Y" && input != "N") {
 				cout << "Start new game (Y/N)?";
 				cin >> input;
-				if (input == "Y")
-				{
+				if (input == "Y") {
 					winner = -1;
 					turnNumber = 1;
 					clearBoard();
 				}
-				else if (input == "N")
-				{
+				else if (input == "N") {
 					endGame = true;
 				}
 			}
@@ -320,15 +313,12 @@ public:
 	}
 };
 
-// Overloaded stream insertion
-ostream & operator<<(ostream & output, TicTacToe arg)
-{
+ostream & operator<<(ostream & output, TicTacToe arg) {
 	arg.display();
 	return output;
 }	
 
-int main()
-{
+int main() {
 	TicTacToe myGame;
 	myGame.startGame();
 	

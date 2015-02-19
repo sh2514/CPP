@@ -7,8 +7,7 @@ Shikuan Huang
 #include "LList.h"
 using namespace std;
 
-class ToH
-{
+class ToH {
 private:
 	int numberOfRings;		// number of rings
 	Stack<int> towers[3];	// the three towers
@@ -16,21 +15,22 @@ private:
 	
 public:
 	// Construct ToH with "rings" number of rings
-	ToH(int rings = 1)
-	{
+	ToH(int rings = 1) {
 		moves = 0;
-		if (rings <= 0)
+		if (rings <= 0) {
 			numberOfRings = 1;
-		else
+		}
+		else {
 			numberOfRings = rings;
+		}
 			
-		for (int i = numberOfRings; i >= 1; i--)
+		for (int i = numberOfRings; i >= 1; i--) {
 			towers[0].push(i);
+		}
 	}
 	
 	// Move top ring from tower "from" to tower "to"
-	void moveRing(int from, int to)
-	{
+	void moveRing(int from, int to) {
 		moves++;
 		int temp = towers[from].peek();
 		towers[from].pop();
@@ -38,23 +38,20 @@ public:
 	}
 	
 	// Solve the puzzle
-	void solve(bool showSteps = false)
-	{
+	void solve(bool showSteps = false) {
 		normalToH(0, 2, 1, numberOfRings, showSteps);
 	}
 	
 	// Solves the normal ToH
-	void normalToH(int from, int to, int extra, int rings, bool showSteps)
-	{
-		if (towers[from].size() == 0)
+	void normalToH(int from, int to, int extra, int rings, bool showSteps) {
+		if (towers[from].size() == 0) {
 			throw 1;
+		}
 		
 		// Base case
-		if (rings == 1)
-		{
+		if (rings == 1) {
 			moveRing(from, to);
-			if (showSteps)
-			{
+			if (showSteps) {
 				print();
 				cout << endl;
 				cin.ignore();
@@ -65,8 +62,7 @@ public:
 		// Recursively solve the smaller problem
 		normalToH(from, extra, to, rings - 1, showSteps);
 		moveRing(from, to);
-		if (showSteps)
-		{
+		if (showSteps) {
 			print();
 			cout << endl;
 			cin.ignore();
@@ -76,28 +72,23 @@ public:
 	}
 	
 	// Return the number of moves
-	int getMoves() const
-	{
+	int getMoves() const {
 		return moves;
 	}
 	
 	// Output the towers
-	void print() const
-	{
+	void print() const {
 		for (int i = 0; i < 3; i++)
 			cout << "> " << towers[i] << endl;
 	}
 };
 
-// Overloaded stream insertion
-ostream & operator<<(ostream & output, const ToH & arg)
-{
+ostream & operator<<(ostream & output, const ToH & arg) {
 	arg.print();
 	return output;	
 }
 
-int main()
-{
+int main() {
 	ToH newPuzzle(15);
 	newPuzzle.solve(0);
 	cout << newPuzzle << endl;

@@ -7,8 +7,7 @@ Shikuan Huang
 #include "BinarySearchTree.h"
 using namespace std;
 
-int main()
-{
+int main() {
 	// Testing equality operator
 	BST<int> myBSTx = BST<int>();
 	myBSTx.insert(98);

@@ -7,8 +7,7 @@ Shikuan Huang
 #include "RationalNumber.h"
 using namespace std;
 
-int main()
-{
+int main() {
 	// Constructors and print functions
 	Rat rat1;
 	Rat rat2(2);

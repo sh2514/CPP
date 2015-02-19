@@ -8,20 +8,20 @@ Shikuan Huang
 using namespace std;
 
 // Determine whether the string argument is a palindrome
-bool isPalindrome(string arg)
-{
-	if (arg.length() == 0)
+bool isPalindrome(string arg) {
+	if (arg.length() == 0) {
 		return false;
-	for (int i = 0; i <= arg.length() / 2; i++)
-	{
-		if (arg[i] != arg[arg.length() - 1 - i])	// Check the current front and current end
+	}
+	for (int i = 0; i <= arg.length() / 2; i++) {
+		// Check the current front and current end
+		if (arg[i] != arg[arg.length() - 1 - i]) {	
 			return false;
+		}
 	}
 	return true;
 }
 
-int main()
-{
+int main() {
 	string a = "Duran";
 	string b = "racecar";
 	string c = "level";

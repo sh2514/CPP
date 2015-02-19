@@ -4,19 +4,17 @@ Shikuan Huang
 ============================================================ */
 
 // Return the index of the minimum element in an integer array
-int findMinInt(int * array, int size)
-{
-	if (size <= 0)
+int findMinInt(int * array, int size) {
+	if (size <= 0) {
 		return -1;
-	else if (size == 1)
+	}
+	else if (size == 1) {
 		return 0;
-	else
-	{
+	}
+	else {
 		int min = 0;
-		for (int i = 1; i < size; i++)
-		{
-			if (array[i] < array[min])
-			{
+		for (int i = 1; i < size; i++) {
+			if (array[i] < array[min]) {
 				min = i;	
 			}
 		}
@@ -26,19 +24,17 @@ int findMinInt(int * array, int size)
 }
 
 // Return the index of the maximum element in an integer array
-int findMaxInt(int * array, int size)
-{
-	if (size <= 0)
+int findMaxInt(int * array, int size) {
+	if (size <= 0) {
 		return -1;
-	else if (size == 1)
+	}
+	else if (size == 1) {
 		return 0;
-	else
-	{
+	}
+	else {
 		int max = 0;
-		for (int i = 1; i < size; i++)
-		{
-			if (array[i] > array[max])
-			{
+		for (int i = 1; i < size; i++) {
+			if (array[i] > array[max]) {
 				max = i;	
 			}
 		}
@@ -49,19 +45,19 @@ int findMaxInt(int * array, int size)
 
 // Return the index of the minimum element in an array
 template <typename T>
-int findMin(T * array, int size)
-{
-	if (size <= 0)
+int findMin(T * array, int size) {
+	if (size <= 0) {
 		return -1;
-	else if (size == 1)
+	}
+	else if (size == 1) {
 		return 0;
-	else
-	{
+	}
+	else {
 		int min = 0;
-		for (int i = 1; i < size; i++)
-		{
-			if (array[i] < array[min])
+		for (int i = 1; i < size; i++) {
+			if (array[i] < array[min]) {
 				min = i;	
+			}
 		}
 		return min;
 	}
@@ -69,19 +65,19 @@ int findMin(T * array, int size)
 
 // Return the index of the maximum element in an array
 template <typename T>
-int findMax(T * array, int size)
-{
-	if (size <= 0)
+int findMax(T * array, int size) {
+	if (size <= 0) {
 		return -1;
-	else if (size == 1)
+	}
+	else if (size == 1) {
 		return 0;
-	else
-	{
+	}
+	else {
 		int max = 0;
-		for (int i = 1; i < size; i++)
-		{
-			if (array[i] > array[max])
+		for (int i = 1; i < size; i++) {
+			if (array[i] > array[max]) {
 				max = i;	
+			}
 		}
 		return max;
 	}

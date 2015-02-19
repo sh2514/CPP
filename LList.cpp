@@ -7,8 +7,7 @@ Shikuan Huang
 #include "LList.h"
 using namespace std;
 
-int main()
-{	
+int main() {	
 	/* ========================================
 	SList Test
 	======================================== */
@@ -287,11 +286,10 @@ int main()
 	// Use "at" function
 	cout << "myList1.at(0) = " << myList1.at(0) << endl;
 	cout << "myList1.at(2) = " << myList1.at(2) << endl;
-	try{
+	try {
 		cout << "myList1.at(9) = " << myList1.at(9) << endl << endl;
 	}
-	catch(int exceptionAtIndex)
-	{
+	catch(int exceptionAtIndex) {
 		cout << "INVALID INDEX: " << exceptionAtIndex << endl << endl;
 	}
 	

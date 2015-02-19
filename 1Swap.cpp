@@ -1,5 +1,5 @@
 /* ============================================================
-Swap function
+Swap the value of two variables
 Shikuan Huang
 ============================================================ */
 
@@ -7,8 +7,7 @@ Shikuan Huang
 using namespace std;
 
 // Swaps two integers by reference
-void swapTwoInts(int & first, int & second)
-{
+void swapTwoInts(int & first, int & second) {
 	int temp = first;
 	first = second;
 	second = temp;
@@ -16,15 +15,13 @@ void swapTwoInts(int & first, int & second)
 
 // Swaps two objects by reference
 template <typename T>
-bool mySwap(T & first, T & second)
-{
+bool mySwap(T & first, T & second) {
 	T temp = first;
 	first = second;
 	second = temp;	
 }
 
-int main()
-{
+int main() {
 	int a = 1;
 	int b = 99;
 	

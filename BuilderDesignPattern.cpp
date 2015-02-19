@@ -7,8 +7,7 @@ Shikuan Huang
 #include <string>
 using namespace std;
 
-class Game
-{	
+class Game {	
 friend ostream & operator<<(ostream & output, Game arg);
 
 private:
@@ -18,18 +17,14 @@ private:
 	int year;
 
 public:
-	// Constructor (used by "GameBuilder")
-	Game(string name, string company, string country, int year)
-	{
+	Game(string name, string company, string country, int year) {
 		this->name = name;
 		this->company = company;
 		this->country = country;
 		this->year = year;	
 	}
 	
-	// Builder Class
-	class GameBuilder
-	{
+	class GameBuilder {
 		private:
 			string _name;
 			string _company;
@@ -37,54 +32,41 @@ public:
 			int _year;
 			
 		public:
-			// Default values
 			static const string defaultName;
 			static const string defaultCompany;
 			static const string defaultCountry;
 			static const int defaultYear = 1900;
-			
-			// Default constructor
+
 			GameBuilder() : _name(defaultName), _company(defaultCompany), _country(defaultCountry), _year(defaultYear){}
 
 			// Build function
-			Game buildGame()
-			{
+			Game buildGame() {
 				return Game(_name, _company, _country, _year);
 			}
 			
-			// Assign name
-			GameBuilder & name(string n)
-			{
+			GameBuilder & name(string n) {
 				_name = n;
 				return *this;	
 			}
 			
-			// Assign company
-			GameBuilder & company(string c)
-			{
+			GameBuilder & company(string c) {
 				_company = c;
 				return *this;
 			}
 			
-			// Assign country
-			GameBuilder & country(string c)
-			{
+			GameBuilder & country(string c) {
 				_country = c;
 				return *this;	
 			}
 			
-			// Assign year
-			GameBuilder & year(int y)
-			{
+			GameBuilder & year(int y) {
 				_year = y;
 				return *this;	
 			}
 	};
 };
 
-// Overloaded stream insertion
-ostream & operator<<(ostream & output, Game arg)
-{
+ostream & operator<<(ostream & output, Game arg) {
 	output << arg.name << " by " << arg.company << " in " << arg.country << " (" << arg.year << ")";
 	return output;
 }
@@ -94,8 +76,7 @@ const string Game::GameBuilder::defaultName = "NOT_ASSIGNED";
 const string Game::GameBuilder::defaultCompany = "NOT_ASSIGNED";
 const string Game::GameBuilder::defaultCountry = "NOT_ASSIGNED";
 
-int main()
-{
+int main() {
 	// Use a builder to build ONE new product - have to create a new GameBuilder object every time
 	Game Gunbound = Game::GameBuilder().name("Gunbound: Thor's Hammer").company("Softnyx").country("South Korea").year(2003).buildGame();
 	Game SP = Game::GameBuilder().name("Survival Project: Search for the Legendary Orb").company("IO Entertainment").country("South Korea").year(2001).buildGame();
