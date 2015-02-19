@@ -1,6 +1,11 @@
 /* ==================================================
 Factorial
 Shikuan Huang
+
+Basic recursive implementation
+Dynamic programming implementation
+Tail recursive implementation
+Iterative implementation
 ================================================== */
 
 #include <iostream>
