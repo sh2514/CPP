@@ -7,11 +7,36 @@ Shikuan Huang
 using namespace std;
 
 // Basic recursive implementation
-long long rFactorial(int number) {
+long long rFactorial(long long number) {
 	if (number == 0 || number == 1) {
 		return 1;
 	}
 	return number * rFactorial(number - 1);
+}
+
+// Dynamic programming implementation
+long long dFactorial(long long number, long long * answers) {
+	if (answers[number] != -1) {
+		return answers[number];
+	}
+	
+	if (number == 0 || number == 1) {
+		answers[number] = number;
+		return number;
+	}
+	
+	answers[number] = number * dFactorial(number - 1, answers);
+	return answers[number];
+}
+
+long long dFactorial(long long number) {
+	long long * answers = new long long[number + 1];
+	for (int i = 0; i < number + 1; i++) {
+		answers[i] = -1;
+	}
+	long long answer = dFactorial(number, answers);
+	delete[] answers;
+	return answer;
 }
 
 // Tail recursive implementation
@@ -47,7 +72,7 @@ int main() {
 			cout << "Invalid: " << input << endl;	
 		}
 		else {
-			cout << "Factorial(" << input << ") = " << iFactorial(input) <<endl;
+			cout << "Factorial(" << input << ") = " << dFactorial(input) <<endl;
 		}
 	}
 }

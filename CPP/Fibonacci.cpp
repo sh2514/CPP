@@ -1,13 +1,18 @@
 /* ==================================================
 Fibonacci
 Shikuan Huang
+
+Basic recursive implementation
+Dynamic programming implementation
+Tail recursive implementation
+Iterative implementation
 ================================================== */
 
 #include <iostream>
 using namespace std;
 
 // Basic recursive implemenation
-long long rFibonacci(int number) {
+long long rFibonacci(long long number) {
 	if (number < 0) {
 		throw number;
 	}
@@ -18,29 +23,6 @@ long long rFibonacci(int number) {
 	else {
 		return rFibonacci(number - 1) + rFibonacci(number - 2);
 	}
-}
-
-// Iterative implementation
-long long iFibonacci(int number) {
-	if (number < 0) {
-		throw number;
-	}
-		
-	if (number == 0) {
-		return 0;
-	}
-		
-	long long first = 0;
-	long long second = 1;
-	long long next = 0;
-	
-	for (int i = 1; i < number; i++) {
-		next = first + second;
-		first = second;
-		second = next;
-	}
-	
-	return second;
 }
 
 // Helper function that performs the actual computation
@@ -73,6 +55,44 @@ long long dFibonacci(int number) {
 	return answer;
 }
 
+// Tail recursive implementation
+long long tFibonacci(int number, long long first, long long second) {
+	if (number == 0) {
+		return second;
+	}
+	return tFibonacci(number - 1, second, first + second);
+}
+
+long long tFibonacci(int number) {
+	if (number == 0) {
+	  return number;
+	}
+	return tFibonacci(number - 1, 0, 1);
+}
+
+// Iterative implementation
+long long iFibonacci(long long number) {
+	if (number < 0) {
+		throw number;
+	}
+		
+	if (number == 0) {
+		return 0;
+	}
+		
+	long long first = 0;
+	long long second = 1;
+	long long next = 0;
+	
+	for (long long i = 1; i < number; i++) {
+		next = first + second;
+		first = second;
+		second = next;
+	}
+	
+	return second;
+}
+
 int main() {
 	int input;
 	bool end = false;
@@ -83,7 +103,7 @@ int main() {
 			cout << "INVALID INPUT\n\n";
 		}
 		else {
-			cout << "fibonacci(" << input << ") = " << dFibonacci(input) << endl << endl;
+			cout << "fibonacci(" << input << ") = " << tFibonacci(input) << endl << endl;
 		}
 	}
 }
